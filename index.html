@@ -8,7 +8,12 @@
     body {
       font-family: Arial, sans-serif;
       text-align: center;
-      margin-top: 100px;
+      margin-top: 50px;
+      background-color: #00cfff; /* 👈 AQUÍ puedes cambiar el color del fondo */
+    }
+    img {
+      width: 150px;
+      margin-bottom: 20px;
     }
     input {
       padding: 10px;
@@ -28,9 +33,14 @@
 </head>
 <body>
 
+  <!-- 👇 Aquí aparece el logo -->
+  <img src="logo.png" alt="Logo Clínica Internacional">
+
+  <!-- 👇 Aquí aparece el título -->
   <h1>Verificación de Convenios</h1>
   <p>Clínica Internacional</p>
 
+  <!-- 👇 Inputs de búsqueda -->
   <input type="text" id="nombre" placeholder="Nombre del juego">
   <input type="text" id="apellido" placeholder="Apellido del juego">
   <br>
@@ -39,14 +49,11 @@
   <div id="resultado"></div>
 
   <script>
-    // Lista de personas con convenio (rellena tú los nombres aquí)
+    // 👇 Aquí rellenas la lista de personas
     const convenios = [
       { nombre: "mapache", apellido: "jhonson" },
-      { nombre: "yoshi", apellido: "jhonson" },
-      { nombre: "", apellido: "" },
-      { nombre: "", apellido: "" },
-      { nombre: "", apellido: "" },
-      // puedes seguir copiando y pegando más
+      { nombre: "yoshi", apellido: "jhonson" }
+      // Puedes seguir agregando más
     ];
 
     function verificarConvenio() {
