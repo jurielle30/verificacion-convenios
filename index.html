@@ -2,107 +2,114 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Verificación de Convenios - Clínica Internacional</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Arial', sans-serif;
       text-align: center;
-      margin-top: 50px;
-      background-color: #2563eb; /* Fondo azul igual que el logo */
+      margin: 0;
+      padding: 0;
+      background-color: #2568d2; /* Fondo azul */
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       position: relative;
     }
-
     .logo {
-      width: 150px;
-      height: 150px;
+      width: 120px;
+      height: 120px;
       border-radius: 50%;
       position: absolute;
       top: 20px;
       left: 20px;
       object-fit: cover;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
     }
-
+    h1 {
+      color: white;
+      margin-bottom: 5px;
+      font-size: 32px;
+    }
+    p {
+      color: white;
+      margin-bottom: 20px;
+      font-size: 18px;
+    }
+    .input-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
     input {
       padding: 12px;
-      margin: 10px;
-      width: 230px;
+      width: 220px;
       border: none;
-      border-radius: 8px;
+      border-radius: 10px;
       font-size: 16px;
+      outline: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
-
+    input:focus {
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    }
     button {
-      padding: 12px 25px;
-      font-size: 16px;
-      background-color: #4CAF50;
+      padding: 14px 30px;
+      background-color: #28a745;
       color: white;
       border: none;
-      border-radius: 8px;
+      border-radius: 10px;
       cursor: pointer;
-      transition: transform 0.2s, background-color 0.2s;
+      font-size: 18px;
       display: flex;
       align-items: center;
-      justify-content: center;
-      margin: 15px auto;
+      gap: 10px;
+      transition: background-color 0.3s, transform 0.3s;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     }
-
     button:hover {
+      background-color: #218838;
       transform: scale(1.05);
-      background-color: #45a049;
     }
-
-    .icono {
-      margin-right: 8px;
-    }
-
     #resultado {
       margin-top: 20px;
-      font-size: 22px;
+      font-size: 24px;
       font-weight: bold;
-      animation: aparecer 0.6s ease forwards;
     }
-
-    @keyframes aparecer {
-      from {
-        opacity: 0;
-        transform: translateY(-20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .positivo {
+      color: #7CFC00;
+    }
+    .negativo {
+      color: #FF6347;
     }
   </style>
 </head>
 <body>
 
-  <!-- Logo de la clínica -->
-  <img src="logo.png" class="logo">
+  <img src="logo.png" alt="Logo Clínica Internacional" class="logo">
 
-  <!-- Títulos -->
   <h1>Verificación de Convenios</h1>
   <p>Clínica Internacional</p>
 
-  <!-- Inputs -->
-  <input type="text" id="nombre" placeholder="Nombre del juego">
-  <input type="text" id="apellido" placeholder="Apellido del juego">
-  <br>
-  
-  <!-- Botón con ícono -->
-  <button onclick="verificarConvenio()">
-    <span class="icono">🔍</span> Verificar
-  </button>
+  <div class="input-group">
+    <input type="text" id="nombre" placeholder="Nombre del juego">
+    <input type="text" id="apellido" placeholder="Apellido del juego">
+  </div>
+
+  <button onclick="verificarConvenio()">🔍 Verificar</button>
 
   <div id="resultado"></div>
 
   <script>
-    // Lista de personas con convenio
     const convenios = [
       { nombre: "mapache", apellido: "jhonson" },
       { nombre: "yoshi", apellido: "jhonson" }
-      // Aquí puedes agregar más personas
     ];
 
     function verificarConvenio() {
@@ -115,17 +122,12 @@
       );
 
       const resultado = document.getElementById('resultado');
-      
-      resultado.style.animation = "none";
-      resultado.offsetHeight;
-      resultado.style.animation = "aparecer 0.6s ease forwards";
-
       if (encontrado) {
         resultado.innerHTML = '✅ ¡Sí tiene convenio!';
-        resultado.style.color = 'limegreen';
+        resultado.className = 'positivo';
       } else {
         resultado.innerHTML = '❌ No tiene convenio.';
-        resultado.style.color = 'red';
+        resultado.className = 'negativo';
       }
     }
   </script>
