@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verificación de Convenios - Clínica Internacional</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+    }
+    input {
+      padding: 10px;
+      margin: 10px;
+      width: 200px;
+    }
+    button {
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+    #resultado {
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Verificación de Convenios</h1>
+  <p>Clínica Internacional</p>
+
+  <input type="text" id="nombre" placeholder="Nombre del juego">
+  <input type="text" id="apellido" placeholder="Apellido del juego">
+  <br>
+  <button onclick="verificarConvenio()">Verificar</button>
+
+  <div id="resultado"></div>
+
+  <script>
+    // Lista de personas con convenio
+    const convenios = [
+      { nombre: "Juan", apellido: "Perez" },
+      { nombre: "Maria", apellido: "Lopez" },
+      { nombre: "Carlos", apellido: "Gomez" }
+      // Puedes agregar más aquí
+    ];
+
+    function verificarConvenio() {
+      const nombre = document.getElementById('nombre').value.trim();
+      const apellido = document.getElementById('apellido').value.trim();
+
+      const encontrado = convenios.some(persona => 
+        persona.nombre.toLowerCase() === nombre.toLowerCase() &&
+        persona.apellido.toLowerCase() === apellido.toLowerCase()
+      );
+
+      const resultado = document.getElementById('resultado');
+      if (encontrado) {
+        resultado.innerHTML = '✅ ¡Sí tiene convenio!';
+        resultado.style.color = 'green';
+      } else {
+        resultado.innerHTML = '❌ No tiene convenio.';
+        resultado.style.color = 'red';
+      }
+    }
+  </script>
+
+</body>
+</html>
